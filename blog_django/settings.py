@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +27,7 @@ SECRET_KEY = 'django-insecure-&yqpjit-bl_#v*6f=xi902y7fx)5ae+b1ynlnj^8qaw4%hv*ew
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "localhost").split(",")
 
 
 # Application definition
@@ -75,14 +77,9 @@ WSGI_APPLICATION = 'blog_django.wsgi.application'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'blog_django',
-        'USER': 'adminblog',
-        'PASSWORD': 'admin123',
-        'HOST': 'localhost',       #Este es el nombre del servicio para BD en docker-compose
-        'PORT': '5432',
-    }
+    'default':  dj_database_url.config(
+        default = os.environ.get('DATABASE_URL')
+    ) 
 }
 
 
