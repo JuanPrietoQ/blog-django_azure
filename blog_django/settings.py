@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'rest_framework',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +52,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middlerware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'blog_django.urls'
@@ -130,3 +132,6 @@ LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/posts/'
 LOGOUT_REDIRECT_URL = '/'
 
+CORS_ALLOWED_ORIGINS = [
+    "https://blog-django-azure.onrender.com/api/posts"
+]
