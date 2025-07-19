@@ -132,6 +132,4 @@ LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/posts/'
 LOGOUT_REDIRECT_URL = '/'
 
-CORS_ALLOWED_ORIGINS = [
-    "https://blog-django-azure.onrender.com/api/posts"
-]
+CORS_ALLOWED_ORIGINS = True
