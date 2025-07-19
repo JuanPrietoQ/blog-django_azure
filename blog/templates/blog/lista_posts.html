@@ -13,5 +13,10 @@
         <a href="{% url 'detalle_post' post.pk %}" class="btn btn-primary"> Leer más </a>
     </div>
 </div>
+<div>
+    <a href="{% url 'crear_post' %}">
+        <button> Crear Nuevo Post</button>
+    </a>
+</div>
 {% endfor %}
 {% endblock %}

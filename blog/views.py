@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from .models import Post
 from django.shortcuts import get_object_or_404
-from .forms import FormularioComentario
+from .forms import FormularioComentario, PostForm
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import redirect
@@ -41,6 +41,15 @@ class ListaPostView (ListView):
     template_name = 'blog/lista_post_cbv.html'
     contex_object_name = 'posts'
 '''
+def crear_post(request):
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('lista_posts')
+    else:
+        form = PostForm()
+    return render(request, 'blog/crear_post.html', {'form':form})
 
 def registro(request):
     if request.method == 'POST':
