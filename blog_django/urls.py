@@ -21,5 +21,6 @@ from blog.views import iniciar_sesion
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', iniciar_sesion, name='login'),
-    path('', include('blog.urls'))
+    path('blog/', include('blog.urls')),
+    path('api/', include('blog.api_urls'),)
 ]
